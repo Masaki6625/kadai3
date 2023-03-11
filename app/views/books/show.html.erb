@@ -5,4 +5,8 @@
   <p>Title <%= @book.title %></p>
   <p>Opinion <%= @book.body %></p>
   <%= image_tag 'no_image.jpg' %>
+
+  <%if @book.user == current_user %>
+  <%= link_to 'destroy', book_path(@book.id), method: :delete %>
+  <% end %>
 </div>
