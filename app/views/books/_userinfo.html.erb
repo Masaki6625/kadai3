@@ -1,5 +1,13 @@
 <h1>userinfo</h1>
+<div>
+  <%= image_tag user.get_profile_image(100,100) %>
+  <h4>name <%= user.name %></h4>
+  <h4>introduce <%= user.introduction %></h4>
+  <% if user == current_user %>
+  <%= link_to "set up", edit_user_path(user.id) %>
+  <%end%>
 
+</div>
 
 <h1>New book</h1>
 <%= form_with model: book do |f| %>
