@@ -1,9 +1,11 @@
-
-
 <div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
+  <%= flash[:notice] %>
 </div>
+
+<%= render 'books/userinfo', book: @book , user: @user %>
+
+
+<h1>Books</h1>
 
 <% @books.each do |book| %>
 <div>
