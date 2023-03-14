@@ -1,5 +1,3 @@
-<h1>userinfo</h1>
-
 <% if book.errors.any? %>
   <%= book.errors.count %>errors prohibited this obj from being saved:
    <ul>
@@ -9,25 +7,41 @@
    </ul>
    <%end%>
 
-<div>
-  <%= image_tag user.get_profile_image(100,100) %>
-  <h4>name <%= user.name %></h4>
-  <h4>introduce <%= user.introduction %></h4>
-  <%= link_to "set up", edit_user_path(user.id) %>
 
-</div>
+    <p><%= image_tag user.get_profile_image(100,100) %></p>
+    <table class= "table table-striped">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th><%= user.name %></th>
+            </tr>
+            <tr>
+                <th>introduction</th>
+                <th><%= user.introduction %></th>
+            </tr>
+        </thead>
+    </table>
+  <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block " do  %>
+  <i class="fas fa-users-cog"></i>
+  <% end %>
 
 
-<h1>New book</h1>
+
+
+
+<h2>New book</h2>
 
 <%= form_with model: book do |f| %>
-
-<h4>Title</h4>
+<div class="form-group">
+<label for="book_title">Title</label><br>
 <%= f.text_field :title %>
-
-<h4>Opinion</h4>
+</div>
+<div class="form-group">
+    <label for="book_opinion">Opinion</label><br>
 <%= f.text_area :body %>
-
-<%= f.submit 'Create Book' %>
+</div>
+<div class="form-group">
+<%= f.submit 'Create Book', class:"btn btn-success" %>
+</div>
 
 <% end %>
